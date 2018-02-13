@@ -1,0 +1,56 @@
+body {
+    background-image: url("../images/Starfield.jpg");
+    color: white;
+}
+header {
+    text-align: center;
+}
+
+header img {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    width: 100%;
+}
+#panes {
+    display: flex;
+    justify-content: center;
+}
+
+#left-pane {
+    text-align: center;
+    float: left;
+    width: 30%;
+    border: 2px solid #eee;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+#right-pane{
+    float: left;
+    width: 30%;
+    border: 2px solid #eee;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+p {
+    line-height: 40px;
+    text-align: center
+}
+footer {
+    clear: both;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 6px;
+}
+
+h4 {
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
