@@ -22,6 +22,8 @@ $(document).ready (function() {
             var answerArray = [];
             //Resets guesses remaining
             $("#guesses-remaining").html("7");
+            //Reset starting image
+            $("#left-pane img").attr("src","assets/images/useforce.gif");
 
             //Choose random word from array
             var randomWord = word[Math.floor(Math.random() * word.length)];
@@ -55,6 +57,7 @@ $(document).ready (function() {
                     //When #guesses-remaining = 0, alert You Lose!
                     if (document.getElementById("guesses-remaining").textContent== 0) {
                     alert ("You Lose! Press 'Enter' to play again!");
+                    $("#left-pane img").attr("src","assets/images/star_wars_fail.jpg");
                 };
                 };
                 //When #word = randomWord, alert You Win!
@@ -62,6 +65,7 @@ $(document).ready (function() {
                 alert ("You win! Press 'Enter' to play again!");
                 var x = parseInt(document.getElementById("wins").textContent);
                 winText.textContent = x + 1;
+                $("#left-pane img").attr("src","assets/images/nailed-it.jpg");
                 };
             };
         }
