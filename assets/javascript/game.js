@@ -10,22 +10,50 @@ $(document).ready (function() {
 
     var winText = document.getElementById("wins");
     var lettersGuessed = document.getElementById("letters");
+    var answerArray = [];
 
-//Fires up when a key is pressed
-    document.onkeyup = function(event) {
-        //var doNotDisplay = ['Enter','Shift','Control','Alt','Meta','CapsLock',',','.','/',';','[','],','1','2','3','4','5','6','7','8','9','0'];
-        var guesses = [];
-        lettersGuessed.textContent += event.key + " ";
-        var userText = event.key;
-        guesses.push(userText);
-       // var unique = userText.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-        
-        //if(userText != doNotDisplay) {
-        //lettersGuessed = userText;
-        //};
-    //Picks random Star Wars word from word array
-        var randomWord = word[Math.floor(Math.random() * word.length)];
-        console.log(randomWord);
-    };
+    //Fires up when 'Enter' key is pressed
+    $(document).keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            //Delete anything in #word
+            $("#word").empty();
+            //Delete anything in #letters
+            $("#letters").empty();
+            //Choose random word from array
+            var randomWord = word[Math.floor(Math.random() * word.length)];
+            console.log(randomWord); //just checking here
+
+            //Create a for loop that displays '-' for length of word.
+            for (var i = 0; i < randomWord.length; i++) {
+                answerArray[i] = "_";
+              }
+            $("#word").html(answerArray);
+            
+            //Prints user input to 'letters guessed:'
+            document.onkeyup = function(event) {
+                var userKey = event.key;
+                if (userKey !== "Enter") {
+                    lettersGuessed.textContent += event.key + " ";
+                    // Update #word with guessed letter
+                    for (var j = 0; j < word.length; j++) {
+                        if (randomWord[j] === userKey) {
+                        answerArray[j] = userKey;
+                        };
+                    };
+                    $("#word").html(answerArray);
+                };
+            };
+
+             //When #word = randomWord, alert You Win!
+            if ($("#word") == $(randomWord)) {
+            alert ("You win!");
+            var x = parseInt(document.getElementById("wins").textContent);
+            winText.textContent = x + 1;
+            };
+        }
+    });
+
+
 
 });
