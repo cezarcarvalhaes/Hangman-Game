@@ -3,7 +3,7 @@ $(document).ready (function() {
     var word = [
     "wookie", "jedi", "milleniumfalcon", "ewok", "lightsaber", "padawan", "force","blastcannon",
     "stormtrooper","sith","darthvader","darthmaul","darthsidious","countdooku","obiwankenobi",
-    "xwing", "rebelallicance","lukeskywalker","princessleia","hansolo","generalgrievous",
+    "xwing", "rebelalliance","lukeskywalker","princessleia","hansolo","generalgrievous",
     "tiefighter","deathstar","chewbacca","clonewars","alderaan","coruscant","dagobah","tatooine",
     "endor","geonosis","cloudcity", "carbonite","palpatine","queenamidala", "naboo", "quigonjin",
     ];
@@ -42,14 +42,14 @@ $(document).ready (function() {
                         };
                     };
                     $("#word").html(answerArray);
+                    var answer = answerArray.join("");
                 };
-            };
-
-             //When #word = randomWord, alert You Win!
-            if ($("#word") == $(randomWord)) {
-            alert ("You win!");
-            var x = parseInt(document.getElementById("wins").textContent);
-            winText.textContent = x + 1;
+                //When #word = randomWord, alert You Win!
+                if (randomWord == answer) {
+                alert ("You win!");
+                var x = parseInt(document.getElementById("wins").textContent);
+                winText.textContent = x + 1;
+                };
             };
         }
     });
