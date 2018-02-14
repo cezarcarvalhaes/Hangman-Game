@@ -10,16 +10,19 @@ $(document).ready (function() {
 
     var winText = document.getElementById("wins");
     var lettersGuessed = document.getElementById("letters");
-    var answerArray = [];
+    var remaining = document.getElementById("guesses-remaining");
 
     //Fires up when 'Enter' key is pressed
     $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
-            //Delete anything in #word
+            //Delete anything in #word and #letters
             $("#word").empty();
-            //Delete anything in #letters
             $("#letters").empty();
+            var answerArray = [];
+            //Resets guesses remaining
+            $("#guesses-remaining").html("7");
+
             //Choose random word from array
             var randomWord = word[Math.floor(Math.random() * word.length)];
             console.log(randomWord); //just checking here
@@ -33,20 +36,30 @@ $(document).ready (function() {
             //Prints user input to 'letters guessed:'
             document.onkeyup = function(event) {
                 var userKey = event.key;
-                if (userKey !== "Enter") {
+                if (userKey !== "Enter" && userKey !== "Shift" && userKey !=="Backspace") {
                     lettersGuessed.textContent += event.key + " ";
                     // Update #word with guessed letter
-                    for (var j = 0; j < word.length; j++) {
+                    for (var j = 0; j < randomWord.length; j++) {
                         if (randomWord[j] === userKey) {
                         answerArray[j] = userKey;
                         };
                     };
                     $("#word").html(answerArray);
                     var answer = answerArray.join("");
+
+                    //Update Guesses remaining each time a letter is wrong
+                    if (!answerArray.includes(userKey)) {
+                    var y = parseInt(document.getElementById("guesses-remaining").textContent);
+                    remaining.textContent = y - 1;};
+                    
+                    //When #guesses-remaining = 0, alert You Lose!
+                    if (document.getElementById("guesses-remaining").textContent== 0) {
+                    alert ("You Lose! Press 'Enter' to play again!");
+                };
                 };
                 //When #word = randomWord, alert You Win!
                 if (randomWord == answer) {
-                alert ("You win!");
+                alert ("You win! Press 'Enter' to play again!");
                 var x = parseInt(document.getElementById("wins").textContent);
                 winText.textContent = x + 1;
                 };
