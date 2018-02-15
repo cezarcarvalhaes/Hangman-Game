@@ -5,7 +5,9 @@ $(document).ready (function() {
     "stormtrooper","sith","darthvader","darthmaul","darthsidious","countdooku","obiwankenobi",
     "xwing", "rebelalliance","lukeskywalker","princessleia","hansolo","generalgrievous",
     "tiefighter","deathstar","chewbacca","clonewars","alderaan","coruscant","dagobah","tatooine",
-    "endor","geonosis","cloudcity", "carbonite","palpatine","queenamidala", "naboo", "quigonjin",
+    "endor","geonosis","cloudcity", "carbonite","palpatine","queenamidala", "naboo", "quigonjin", "forcesensitive",
+    "jabbathehut","bobafett","hansolo","bespin","grandmofftarkin","naboo","tuskenraider","jangofett","macewindu",
+    "kashyyyk",
     ];
 
     var winText = document.getElementById("wins");
