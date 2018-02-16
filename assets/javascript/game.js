@@ -58,7 +58,7 @@ $(document).ready (function() {
                     
                     //When #guesses-remaining = 0, alert You Lose!
                     if (document.getElementById("guesses-remaining").textContent== 0) {
-                    alert ("You Lose! Press 'Enter' to play again!");
+                    alert ("You Lose! Your word was: " + randomWord + ". Press 'Enter' to play again!");
                     $("#left-pane img").attr("src","assets/images/star_wars_fail.jpg");
                 };
                 };
